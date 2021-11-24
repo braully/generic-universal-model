@@ -22,8 +22,7 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
-*/
-
+ */
 package io.github.braully.domain;
 
 import java.io.Serializable;
@@ -39,7 +38,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-@Setter @Accessors(chain = true)
+/**
+ *
+ * @author Braully Rocha da Silva
+ */
+@Setter
+@Accessors(chain = true)
 @Getter
 @Entity
 @Table(name = "menu", schema = "security")

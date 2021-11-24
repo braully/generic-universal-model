@@ -19,8 +19,7 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
-*/
-
+ */
 package io.github.braully.domain;
 
 import java.io.Serializable;
@@ -42,6 +41,10 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;
 
+/**
+ *
+ * @author Braully Rocha da Silva
+ */
 @Embeddable
 @Access(AccessType.FIELD)
 public class Money implements Serializable, Comparable<MonetaryAmount>, MonetaryAmount {

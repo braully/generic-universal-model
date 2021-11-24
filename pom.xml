@@ -102,7 +102,7 @@
                             <removeMethods>true</removeMethods>
                             <addJPAAnnotations>true</addJPAAnnotations>
                             <scanPackages>
-                                <scanPackage>com.github.braully.domain</scanPackage>
+                                <scanPackage>io.github.braully.domain</scanPackage>
                             </scanPackages>
                         </configuration>
                     </plugin>
