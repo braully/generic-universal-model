@@ -1,0 +1,837 @@
+@startuml
+
+abstract class io.github.braully.domain.AbstractAuditableEntity {
+}
+
+
+abstract class io.github.braully.domain.AbstractEntity {
+	{method} +cache () : io.github.braully.domain.CacheTemporayAtrribute
+	{method} +equals ( paramObject1 : Object ) : boolean
+	{method} +getActive () : Boolean
+	{method} +hashCode () : int
+	{method} +isPersisted () : boolean
+	{method} #posToString () : String
+	{method} #preToString () : String
+	{method} +setActive ( paramBoolean1 : Boolean ) : void
+	{method} +toString () : String
+	{method} +toggleRemoved () : void
+}
+
+
+abstract class io.github.braully.domain.AbstractExpirableEntity {
+	{method} +isPersisted () : boolean
+	{method} +toString () : String
+}
+
+
+abstract class io.github.braully.domain.AbstractGlobalEntity {
+	{method} +isPersisted () : boolean
+	{method} +toString () : String
+}
+
+
+abstract class io.github.braully.domain.AbstractLightRemoveEntity {
+	{method} +getActive () : Boolean
+	{method} +setActive ( paramBoolean1 : Boolean ) : void
+	{method} +toggleRemoved () : void
+}
+
+
+abstract class io.github.braully.domain.AbstractMigrableEntity {
+	{method} +isPersisted () : boolean
+}
+
+
+abstract class io.github.braully.domain.AbstractSimpleEntity {
+	{method} +cache () : io.github.braully.domain.CacheTemporayAtrribute
+	{method} +equals ( paramObject1 : Object ) : boolean
+	{method} +hashCode () : int
+	{method} +isPersisted () : boolean
+	{method} #posToString () : String
+	{method} #preToString () : String
+	{method} +toString () : String
+}
+
+
+abstract class io.github.braully.domain.AbstractStatusEntity {
+	{method} +isPersisted () : boolean
+}
+
+
+abstract class io.github.braully.domain.AbstractSystemEntity {
+	{method} +isPersisted () : boolean
+}
+
+
+class io.github.braully.domain.Account {
+	{method} +isCredit () : boolean
+	{method} +isDebit () : boolean
+	{method} +toString () : String
+}
+
+
+enum io.github.braully.domain.Account$AccountType {
+	{field} +Credit
+	{field} +Debit
+}
+
+
+class io.github.braully.domain.AccountTransaction {
+	{method} +addChildTransaction ( paramAccountTransaction1 : io.github.braully.domain.AccountTransaction ) : void
+	{method} +compareTo ( paramObject1 : Object ) : int
+	{method} +compareTo ( paramAccountTransaction1 : io.github.braully.domain.AccountTransaction ) : int
+	{method} +equals ( paramObject1 : Object ) : boolean
+	{method} +getMapAllProps () : java.util.Map
+	{method} +getOrganization () : io.github.braully.domain.Organization
+	{method} +setCodigo ( paramString1 : String ) : void
+	{method} +setContaBancaria ( paramFinancialAccount1 : io.github.braully.domain.FinancialAccount ) : void
+	{method} +setData ( paramDate1 : java.util.Date ) : void
+	{method} +setDescricao ( paramString1 : String ) : void
+	{method} +setPartnerIfNull ( paramPartner1 : io.github.braully.domain.Partner ) : void
+	{method} +setValor ( paramBigDecimal1 : java.math.BigDecimal ) : void
+}
+
+
+class io.github.braully.domain.Address {
+	{method} +addressLine1 ( paramString1 : String ) : io.github.braully.domain.Address
+	{method} +cep ( paramString1 : String ) : io.github.braully.domain.Address
+	{method} +city ( paramCity1 : io.github.braully.domain.City ) : io.github.braully.domain.Address
+	{method} +district ( paramString1 : String ) : io.github.braully.domain.Address
+	{method} +format () : String
+	{method} +getBairro () : String
+	{method} +getCidade () : io.github.braully.domain.City
+	{method} +getComplemento () : String
+	{method} +getDescricaoFormatada () : String
+	{method} +setBairro ( paramString1 : String ) : void
+	{method} +setCep ( paramString1 : String ) : void
+	{method} +setDescricao ( paramString1 : String ) : void
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.App {
+}
+
+
+class io.github.braully.domain.Bank {
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.BinaryFile {
+	{method} +getArquivo () : [B
+	{method} +getExtensaoArquivo () : String
+	{method} +getNome () : String
+	{method} +getStream () : java.io.InputStream
+	{method} +isReady () : boolean
+	{method} #preToString () : String
+	{method} +setNome ( paramString1 : String ) : void
+}
+
+
+class io.github.braully.domain.Brand {
+}
+
+
+class io.github.braully.domain.Budget {
+}
+
+
+class io.github.braully.domain.Bug {
+	{method} +finalizar () : void
+	{method} +getAssunto () : String
+	{method} +getCadeiaTarefas () : java.util.List
+	{method} +getDataCriacao () : java.util.Date
+	{method} +getDataFinalizacao () : java.util.Date
+	{method} +getDescricao () : String
+	{method} +getDescricaoFormatada () : String
+	{method} +getMensagens () : java.util.List
+	{method} +getNotas () : String
+	{method} +getPai () : io.github.braully.domain.Bug
+	{method} +getProjeto () : io.github.braully.domain.App
+	{method} +getTarefa () : io.github.braully.domain.Task
+	{method} +getVisaoLog () : io.github.braully.domain.LogEntryErrorView
+	{method} +isAberto () : boolean
+	{method} +isFinalizado () : boolean
+	{method} +isReportado () : boolean
+	{method} +isResolvido () : boolean
+	{method} +resolver () : void
+	{method} +setDataCriacao ( paramDate1 : java.util.Date ) : void
+	{method} +setDataFinalizacao ( paramDate1 : java.util.Date ) : void
+	{method} +setDescricao ( paramString1 : String ) : void
+	{method} +setMensagens ( paramList1 : java.util.List ) : void
+	{method} +setPai ( paramBug1 : io.github.braully.domain.Bug ) : void
+	{method} +setProjeto ( paramApp1 : io.github.braully.domain.App ) : void
+	{method} +setTarefa ( paramTask1 : io.github.braully.domain.Task ) : void
+	{method} +setVisaoLog ( paramLogEntryErrorView1 : io.github.braully.domain.LogEntryErrorView ) : void
+}
+
+
+class io.github.braully.domain.CacheTemporayAtrribute {
+	{method} +merge ( paramCacheTemporayAtrribute1 : io.github.braully.domain.CacheTemporayAtrribute ) : io.github.braully.domain.CacheTemporayAtrribute
+	{method} +merge ( paramMap1 : java.util.Map ) : io.github.braully.domain.CacheTemporayAtrribute
+	{method} +setValue ( paramString1 : String , paramObject2 : Object ) : io.github.braully.domain.CacheTemporayAtrribute
+}
+
+
+class io.github.braully.domain.City {
+	{method} +format () : String
+	{method} +getNomeFormatado () : String
+	{method} +isValida () : boolean
+	{method} +setNomeFormatado ( paramString1 : String ) : void
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.Contact {
+	{method} +add ( paramIterable1 : Iterable ) : void
+	{method} +add ( paramAddress1 : io.github.braully.domain.Address ) : void
+	{method} +add ( paramEmail1 : io.github.braully.domain.Email ) : void
+	{method} +add ( paramPhone1 : io.github.braully.domain.Phone ) : void
+	{method} +getPhones () : java.util.Set
+	{method} +getTelefonesFormatado () : String
+	{method} +hasAddress () : boolean
+	{method} +hasPhone () : boolean
+	{method} +mains () : io.github.braully.domain.Contact
+	{method} +newMains () : void
+	{method} +remove ( paramAddress1 : io.github.braully.domain.Address ) : void
+	{method} +remove ( paramEmail1 : io.github.braully.domain.Email ) : void
+	{method} +remove ( paramPhone1 : io.github.braully.domain.Phone ) : void
+}
+
+
+class io.github.braully.domain.Email {
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.EmploymentContract {
+	{method} +getAuthority () : String
+}
+
+
+class io.github.braully.domain.EntityDummy {
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.EntityOperation {
+}
+
+
+class io.github.braully.domain.EntityOperationDetail {
+}
+
+
+enum io.github.braully.domain.FactorType {
+	{field} +Pecentage (%)
+	{field} +Value $
+}
+
+
+class io.github.braully.domain.FinancialAccount {
+	{method} +getAgencia () : String
+	{method} +getAgenciaDv () : String
+	{method} +getAgenciaFormatada () : String
+	{method} +getAgenciaSemDv () : String
+	{method} +getAgenciaSomenteNumero () : String
+	{method} +getCodigoAgenciaDv () : String
+	{method} +getConta () : String
+	{method} +getContaDv () : String
+	{method} +getContaFormatada () : String
+	{method} +getContaSomenteNumeros () : String
+	{method} +getModalidade () : String
+	{method} +posToString () : String
+	{method} +preToString () : String
+	{method} +setBanco ( paramBank1 : io.github.braully.domain.Bank ) : void
+	{method} +setCodigoOfx ( paramString1 : String ) : void
+	{method} +setConta ( paramString1 : String ) : void
+	{method} +setNome ( paramString1 : String ) : void
+}
+
+
+class io.github.braully.domain.FinancialCharge {
+	{method} +getFatorJuros () : Long
+	{method} +getFatorMulta () : Long
+	{method} +getTipoFatorJuros () : io.github.braully.domain.FactorType
+	{method} +getTipoFatorMulta () : io.github.braully.domain.FactorType
+	{method} +getTipoPeriodoJuros () : io.github.braully.domain.TypePeriod
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.FinancialPeriod {
+	{method} +compareTo ( paramObject1 : Object ) : int
+	{method} +compareTo ( paramFinancialPeriod1 : io.github.braully.domain.FinancialPeriod ) : int
+	{method} +equals ( paramObject1 : Object ) : boolean
+	{method} +getAno () : int
+	{method} +getDescricaoFormatada () : String
+	{method} +getIndice () : int
+	{method} +getMes () : int
+	{method} +hashCode () : int
+	{method} +setAno ( paramint1 : int ) : void
+	{method} +setIndice ( paramint1 : int ) : void
+	{method} +setMes ( paramint1 : int ) : void
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.GenericType {
+	{method} +getDescricao () : String
+}
+
+
+class io.github.braully.domain.GenericValue {
+	{method} +getDoubleValue () : Double
+	{method} +getValue () : Object
+	{method} +isBooleanValue () : Boolean
+	{method} +setBooleanValue ( paramBoolean1 : Boolean ) : void
+	{method} +setDoubleValue ( paramDouble1 : Double ) : void
+}
+
+
+class io.github.braully.domain.Host {
+}
+
+
+interface io.github.braully.domain.IFormatable {
+	{method}  {abstract} +format () : String
+}
+
+
+interface io.github.braully.domain.INameComparable {
+	{method} +compareTo ( paramObject1 : Object ) : int
+	{method} +compareTo ( paramINameComparable1 : io.github.braully.domain.INameComparable ) : int
+	{method}  {abstract} +getName () : String
+}
+
+
+interface io.github.braully.domain.IOrganiztionEntityDependent {
+	{method}  {abstract} +getOrganization () : io.github.braully.domain.Organization
+}
+
+
+interface io.github.braully.domain.ISystemEntity {
+	{method}  {abstract} +getSystemLock () : Boolean
+}
+
+
+class io.github.braully.domain.InfoExtra {
+	{method} +getDate ( paramString1 : String ) : java.util.Date
+	{method} +getEnumValue ( paramClass1 : Class , paramString2 : String ) : Enum
+	{method} +getExtraNumberValues () : java.util.Map
+	{method} +getExtraStringValues () : java.util.Map
+	{method} +getExtraValues () : java.util.Map
+	{method} +getLong ( paramString1 : String ) : Long
+	{method} +getMapAllProps () : java.util.Map
+	{method} +getSimpleValues () : java.util.Map
+	{method} +getString ( paramString1 : String ) : String
+	{method} +setDate ( paramString1 : String , paramDate2 : java.util.Date ) : void
+	{method} +setEnumValue ( paramString1 : String , paramEnum2 : Enum ) : void
+	{method} +setExtraValues ( paramMap1 : java.util.Map ) : void
+	{method} +setLong ( paramString1 : String , paramLong2 : Long ) : void
+	{method} +setLong ( paramString1 : String , paramlong2 : long ) : void
+	{method} +setString ( paramString1 : String , paramString2 : String ) : void
+}
+
+
+class io.github.braully.domain.Inventory {
+	{method} #preToString () : String
+}
+
+
+class io.github.braully.domain.InventoryItem {
+}
+
+
+class io.github.braully.domain.InventoryItemTransaction {
+}
+
+
+class io.github.braully.domain.LocaleSupported {
+}
+
+
+class io.github.braully.domain.LogEntryError {
+}
+
+
+class io.github.braully.domain.LogEntryErrorView {
+}
+
+
+class io.github.braully.domain.Menu {
+	{method} +addChild ( paramMenu1 : io.github.braully.domain.Menu ) : io.github.braully.domain.Menu
+	{method} +getChildsActive () : java.util.List
+	{method} +getPai () : io.github.braully.domain.Menu
+	{method} +link ( paramString1 : String ) : io.github.braully.domain.Menu
+	{method} +setPai ( paramMenu1 : io.github.braully.domain.Menu ) : void
+}
+
+
+class io.github.braully.domain.Money {
+	{method} +abs () : javax.money.MonetaryAmount
+	{method} +add ( paramMonetaryAmount1 : javax.money.MonetaryAmount ) : javax.money.MonetaryAmount
+	{method} +adiciona ( paramNumber1 : Number ) : io.github.braully.domain.Money
+	{method} +adiciona ( paramMoney1 : io.github.braully.domain.Money ) : io.github.braully.domain.Money
+	{method} +adicionaValorAbsoluto ( paramNumber1 : Number ) : io.github.braully.domain.Money
+	{method} +adicionaValorAbsoluto ( paramMoney1 : io.github.braully.domain.Money ) : io.github.braully.domain.Money
+	{method} +compareTo ( paramObject1 : Object ) : int
+	{method} +compareTo ( paramMonetaryAmount1 : javax.money.MonetaryAmount ) : int
+	{method} +divide ( paramNumber1 : Number ) : javax.money.MonetaryAmount
+	{method} +divide ( paramdouble1 : double ) : javax.money.MonetaryAmount
+	{method} +divide ( paramint1 : int ) : [Lio.github.braully.domain.Money;
+	{method} +divide ( paramlong1 : long ) : javax.money.MonetaryAmount
+	{method} +divideAndRemainder ( paramNumber1 : Number ) : [Ljavax.money.MonetaryAmount;
+	{method} +divideAndRemainder ( paramdouble1 : double ) : [Ljavax.money.MonetaryAmount;
+	{method} +divideAndRemainder ( paramlong1 : long ) : [Ljavax.money.MonetaryAmount;
+	{method} +divideToIntegralValue ( paramNumber1 : Number ) : javax.money.MonetaryAmount
+	{method} +divideToIntegralValue ( paramdouble1 : double ) : javax.money.MonetaryAmount
+	{method} +divideToIntegralValue ( paramlong1 : long ) : javax.money.MonetaryAmount
+	{method} +divisaoArredondandoTeto ( paramlong1 : long ) : io.github.braully.domain.Money
+	{method} +equals ( paramObject1 : Object ) : boolean
+	{method} +formatar () : String
+	{method}  {static} +formatar ( paramBigDecimal1 : java.math.BigDecimal ) : String
+	{method}  {static} +formatar ( paramlong1 : long ) : String
+	{method} +formatarValor () : String
+	{method} +getContext () : javax.money.MonetaryContext
+	{method} +getCurrency () : javax.money.CurrencyUnit
+	{method} +getDescricaoFormatada () : String
+	{method} +getEscala () : long
+	{method} +getFactory () : javax.money.MonetaryAmountFactory
+	{method} +getMoeda () : java.util.Currency
+	{method} +getNumber () : javax.money.NumberValue
+	{method} +getSubUnidade () : long
+	{method} +getUnidade () : long
+	{method} +getValor () : long
+	{method} +getValorBig () : java.math.BigDecimal
+	{method} +getValorDouble () : Double
+	{method} +getValorDouble ( paramlong1 : long ) : Double
+	{method} +hashCode () : int
+	{method} +isEqualTo ( paramMonetaryAmount1 : javax.money.MonetaryAmount ) : boolean
+	{method} +isGreaterThan ( paramMonetaryAmount1 : javax.money.MonetaryAmount ) : boolean
+	{method} +isGreaterThanOrEqualTo ( paramMonetaryAmount1 : javax.money.MonetaryAmount ) : boolean
+	{method} +isLessThan ( paramMonetaryAmount1 : javax.money.MonetaryAmount ) : boolean
+	{method} +isLessThanOrEqualTo ( paramMonetaryAmount1 : javax.money.MonetaryAmount ) : boolean
+	{method} +isZero () : boolean
+	{method} +multiplica ( paramlong1 : long ) : io.github.braully.domain.Money
+	{method} +multiply ( paramNumber1 : Number ) : javax.money.MonetaryAmount
+	{method} +multiply ( paramdouble1 : double ) : javax.money.MonetaryAmount
+	{method} +multiply ( paramlong1 : long ) : javax.money.MonetaryAmount
+	{method} +negate () : javax.money.MonetaryAmount
+	{method} #parseValorFormatado ( paramString1 : String ) : long
+	{method} +parser ( paramString1 : String ) : void
+	{method}  {static} +parserNumber ( paramString1 : String ) : Number
+	{method} +plus () : javax.money.MonetaryAmount
+	{method} +porcentagem ( paramNumber1 : Number ) : io.github.braully.domain.Money
+	{method} +porcentagem ( paramString1 : String ) : io.github.braully.domain.Money
+	{method} +porcentagem ( paramdouble1 : double ) : io.github.braully.domain.Money
+	{method} +porcentagem ( paramlong1 : long ) : io.github.braully.domain.Money
+	{method} +porcentagemFator ( paramLong1 : Long ) : io.github.braully.domain.Money
+	{method} +porcentagemFator ( paramString1 : String ) : io.github.braully.domain.Money
+	{method} +porcentagemFator ( paramlong1 : long ) : io.github.braully.domain.Money
+	{method} +remainder ( paramNumber1 : Number ) : javax.money.MonetaryAmount
+	{method} +remainder ( paramdouble1 : double ) : javax.money.MonetaryAmount
+	{method} +remainder ( paramlong1 : long ) : javax.money.MonetaryAmount
+	{method} +scaleByPowerOfTen ( paramint1 : int ) : javax.money.MonetaryAmount
+	{method} +setValor ( paramlong1 : long ) : void
+	{method} +signum () : int
+	{method} +stripTrailingZeros () : javax.money.MonetaryAmount
+	{method} +subtract ( paramMonetaryAmount1 : javax.money.MonetaryAmount ) : javax.money.MonetaryAmount
+	{method} +subtrai ( paramMoney1 : io.github.braully.domain.Money ) : io.github.braully.domain.Money
+	{method} +subtraiValorAbsoluto ( paramNumber1 : Number ) : io.github.braully.domain.Money
+	{method} +subtraiValorAbsoluto ( paramMoney1 : io.github.braully.domain.Money ) : io.github.braully.domain.Money
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.Node {
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.NodeDir {
+}
+
+
+class io.github.braully.domain.NodeFile {
+	{method}  {static} +main ( paramString;1 : [Ljava.lang.String; ) : void
+}
+
+
+class io.github.braully.domain.NodeFileDir {
+}
+
+
+class io.github.braully.domain.Organization {
+	{method} +getAddressDescription () : String
+	{method} +getFiscalCodeClean () : String
+	{method} +getMainAddress () : io.github.braully.domain.Address
+	{method} +getVisualDescription () : String
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.OrganizationRole {
+	{method} +equals ( paramObject1 : Object ) : boolean
+	{method} +hashCode () : int
+	{method} #posToString () : String
+	{method} #preToString () : String
+}
+
+
+class io.github.braully.domain.Parameter {
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.Partner {
+	{method} +contact () : io.github.braully.domain.Contact
+	{method} +getAddress () : io.github.braully.domain.Address
+	{method} +getEmail () : String
+	{method} +getFiscalCodeClean () : String
+	{method} +getNome () : String
+	{method} +getTelefones () : java.util.Set
+	{method} +infoExtra () : io.github.braully.domain.InfoExtra
+	{method} +setAddress ( paramAddress1 : io.github.braully.domain.Address ) : void
+	{method} +setContactSeNull ( paramContact1 : io.github.braully.domain.Contact ) : void
+	{method} +setDataNascimento ( paramDate1 : java.util.Date ) : void
+	{method} +setEmail ( paramString1 : String ) : void
+	{method} +setInfoExtraSeNull ( paramInfoExtra1 : io.github.braully.domain.InfoExtra ) : void
+	{method} +setNaturalidade ( paramCity1 : io.github.braully.domain.City ) : void
+	{method} +setNome ( paramString1 : String ) : void
+	{method} +setNumeroComprovantePessoa ( paramString1 : String ) : void
+	{method} +toString () : String
+	{method} +toStringDetailed () : String
+}
+
+
+class io.github.braully.domain.PartnerGroup {
+}
+
+
+class io.github.braully.domain.PartnerPartner {
+	{method} +setPartnerTargetSeNull ( paramPartner1 : io.github.braully.domain.Partner ) : void
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.PartnerPartnerPK {
+	{method} +equals ( paramObject1 : Object ) : boolean
+	{method} +hashCode () : int
+}
+
+
+class io.github.braully.domain.Payment {
+}
+
+
+class io.github.braully.domain.Phone {
+	{method} +format () : String
+	{method} +number ( paramString1 : String ) : io.github.braully.domain.Phone
+	{method} +toString () : String
+	{method} +type ( paramString1 : String ) : io.github.braully.domain.Phone
+}
+
+
+class io.github.braully.domain.Product {
+	{method} #preToString () : String
+}
+
+
+class io.github.braully.domain.ProductPrice {
+}
+
+
+class io.github.braully.domain.PurchaseOrder {
+	{method} +getExtraNumberValues () : java.util.Map
+	{method} +getExtraStringValues () : java.util.Map
+	{method} +getMapAllProps () : java.util.Map
+	{method} +posToString () : String
+	{method} #preToString () : String
+	{method} +setAccountTransactionIfNull ( paramAccountTransaction1 : io.github.braully.domain.AccountTransaction ) : void
+	{method} +setDateOrderIfNull ( paramDate1 : java.util.Date ) : void
+	{method} +setInfoExtraSeNull ( paramInfoExtra1 : io.github.braully.domain.InfoExtra ) : void
+}
+
+
+class io.github.braully.domain.PurchaseOrderItem {
+	{method} +toString () : String
+}
+
+
+class io.github.braully.domain.ReportTemplate {
+	{method} +getExtensaoArquivo () : String
+	{method} +getNomeSaida () : String
+}
+
+
+class io.github.braully.domain.Role {
+	{method} +getAuthority () : String
+	{method} +getMenusArray () : [Lio.github.braully.domain.Menu;
+	{method} +name ( paramString1 : String ) : io.github.braully.domain.Role
+	{method} +setMenusArray ( paramMenu;1 : [Lio.github.braully.domain.Menu; ) : void
+	{method} +toString () : String
+}
+
+
+enum io.github.braully.domain.StatusBug {
+	{field} +CANCELED
+	{field} +OPEN
+	{field} +REPORTED
+	{field} +SOLVED
+}
+
+
+enum io.github.braully.domain.StatusExecutionCycle {
+	{field} +BLOCKED
+	{field} +CANCELED
+	{field} +DONE
+	{field} +READY
+	{field} +RUNNING
+}
+
+
+enum io.github.braully.domain.SysRole {
+	{field} +ADM
+	{field} +MNG
+	{field} +USER
+}
+
+
+class io.github.braully.domain.TagItem {
+	{method} +getFilhos () : java.util.Set
+	{method} +getPai () : io.github.braully.domain.TagItem
+}
+
+
+class io.github.braully.domain.Task {
+}
+
+
+enum io.github.braully.domain.TransactionSituation {
+	{field} +CANCELED
+	{field} +EXECUTED
+	{field} +EXPIRED
+	{field} +PENDING
+	{field} +Paid Out
+	{field} +RECEIVED
+}
+
+
+enum io.github.braully.domain.TypePeriod {
+	{field} +BIMONTHLY
+	{field} +DAILY
+	{field} +HOURLY
+	{field} +MONTHLY
+	{field} +QUARTERLY
+	{field} +SEMESTER
+	{field} +YEARLY
+}
+
+
+class io.github.braully.domain.TypePeriod$1 {
+}
+
+
+enum io.github.braully.domain.UnitMeasurement {
+	{field} +Hour
+	{field} +Kg
+	{field} +LB
+	{field} +Meter
+	{field} +POL
+	{field} +Unity
+}
+
+
+class io.github.braully.domain.UserLogin {
+	{method} +getPasswordHash () : String
+	{method} +isAccountNonExpired () : boolean
+	{method} +isAccountNonLocked () : boolean
+	{method} +isCredentialsNonExpired () : boolean
+	{method} +isEnabled () : boolean
+	{method} +setPasswordHash ( paramString1 : String ) : void
+}
+
+
+class io.github.braully.domain.UserLoginPartner {
+}
+
+
+class io.github.braully.domain.UserMessage {
+}
+
+
+
+
+io.github.braully.domain.AbstractAuditableEntity --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.AbstractEntity -->  io.github.braully.domain.CacheTemporayAtrribute : cache
+io.github.braully.domain.AbstractExpirableEntity --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.AbstractLightRemoveEntity --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.AbstractMigrableEntity --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.AbstractSimpleEntity -->  io.github.braully.domain.CacheTemporayAtrribute : cache
+io.github.braully.domain.AbstractStatusEntity --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.AbstractSystemEntity --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.AbstractSystemEntity ..|>  io.github.braully.domain.ISystemEntity
+io.github.braully.domain.Account -->  io.github.braully.domain.Account : parentAccount
+io.github.braully.domain.Account -->  io.github.braully.domain.Account$AccountType : typeGL
+io.github.braully.domain.Account --|>  io.github.braully.domain.AbstractMigrableEntity
+io.github.braully.domain.Account ..|>  io.github.braully.domain.ISystemEntity
+io.github.braully.domain.AccountTransaction "1" o-- "0..*"  io.github.braully.domain.AccountTransaction : childTransactions
+io.github.braully.domain.AccountTransaction -->  io.github.braully.domain.Account : account
+io.github.braully.domain.AccountTransaction -->  io.github.braully.domain.AccountTransaction : parentTransaction
+io.github.braully.domain.AccountTransaction -->  io.github.braully.domain.FinancialAccount : financialAccount
+io.github.braully.domain.AccountTransaction -->  io.github.braully.domain.InfoExtra : infoExtra
+io.github.braully.domain.AccountTransaction -->  io.github.braully.domain.Partner : partner
+io.github.braully.domain.AccountTransaction -->  io.github.braully.domain.TransactionSituation : situation
+io.github.braully.domain.AccountTransaction --|>  io.github.braully.domain.AbstractMigrableEntity
+io.github.braully.domain.AccountTransaction ..|>  io.github.braully.domain.IOrganiztionEntityDependent
+io.github.braully.domain.Address -->  io.github.braully.domain.City : city
+io.github.braully.domain.Address --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.Address ..|>  io.github.braully.domain.IFormatable
+io.github.braully.domain.App --|>  io.github.braully.domain.AbstractStatusEntity
+io.github.braully.domain.Bank --|>  io.github.braully.domain.AbstractMigrableEntity
+io.github.braully.domain.BinaryFile -->  io.github.braully.domain.InfoExtra : infoExtra
+io.github.braully.domain.BinaryFile -->  io.github.braully.domain.Organization : organization
+io.github.braully.domain.BinaryFile -->  io.github.braully.domain.StatusExecutionCycle : statusExecution
+io.github.braully.domain.BinaryFile -->  io.github.braully.domain.UserLogin : userLogin
+io.github.braully.domain.BinaryFile --|>  io.github.braully.domain.AbstractStatusEntity
+io.github.braully.domain.Brand --|>  io.github.braully.domain.AbstractStatusEntity
+io.github.braully.domain.Budget -->  io.github.braully.domain.Account : account
+io.github.braully.domain.Budget --|>  io.github.braully.domain.AbstractExpirableEntity
+io.github.braully.domain.Bug "1" o-- "0..*"  io.github.braully.domain.LogEntryError : messages
+io.github.braully.domain.Bug -->  io.github.braully.domain.App : app
+io.github.braully.domain.Bug -->  io.github.braully.domain.Bug : parent
+io.github.braully.domain.Bug -->  io.github.braully.domain.LogEntryErrorView : viewLog
+io.github.braully.domain.Bug -->  io.github.braully.domain.StatusBug : statusBug
+io.github.braully.domain.Bug -->  io.github.braully.domain.Task : task
+io.github.braully.domain.Bug --|>  io.github.braully.domain.AbstractStatusEntity
+io.github.braully.domain.City --|>  io.github.braully.domain.AbstractGlobalEntity
+io.github.braully.domain.City ..|>  io.github.braully.domain.IFormatable
+io.github.braully.domain.Contact "1" o-- "0..*"  io.github.braully.domain.Address : extraAddresses
+io.github.braully.domain.Contact "1" o-- "0..*"  io.github.braully.domain.Email : extraEmails
+io.github.braully.domain.Contact "1" o-- "0..*"  io.github.braully.domain.Phone : extraPhones
+io.github.braully.domain.Contact -->  io.github.braully.domain.Address : mainAddress
+io.github.braully.domain.Contact -->  io.github.braully.domain.Email : mainEmail
+io.github.braully.domain.Contact -->  io.github.braully.domain.Phone : mainPhone
+io.github.braully.domain.Contact --|>  io.github.braully.domain.AbstractGlobalEntity
+io.github.braully.domain.Email --|>  io.github.braully.domain.AbstractLightRemoveEntity
+io.github.braully.domain.EmploymentContract -->  io.github.braully.domain.GenericType : function
+io.github.braully.domain.EmploymentContract -->  io.github.braully.domain.Organization : organization
+io.github.braully.domain.EmploymentContract -->  io.github.braully.domain.Partner : employee
+io.github.braully.domain.EmploymentContract -->  io.github.braully.domain.Role : role
+io.github.braully.domain.EmploymentContract -->  io.github.braully.domain.TypePeriod : period
+io.github.braully.domain.EmploymentContract --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.EmploymentContract ..|>  io.github.braully.domain.IOrganiztionEntityDependent
+io.github.braully.domain.EntityDummy "1" o-- "0..*"  io.github.braully.domain.EntityDummy : childrens
+io.github.braully.domain.EntityDummy -->  io.github.braully.domain.EntityDummy : parent
+io.github.braully.domain.EntityDummy --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.EntityOperation -->  io.github.braully.domain.UserLogin : userLogin
+io.github.braully.domain.EntityOperation --|>  io.github.braully.domain.AbstractSimpleEntity
+io.github.braully.domain.EntityOperationDetail -->  io.github.braully.domain.UserLogin : userLogin
+io.github.braully.domain.EntityOperationDetail --|>  io.github.braully.domain.AbstractSimpleEntity
+io.github.braully.domain.FinancialAccount -->  io.github.braully.domain.Bank : bank
+io.github.braully.domain.FinancialAccount -->  io.github.braully.domain.FinancialAccount : parentAccount
+io.github.braully.domain.FinancialAccount -->  io.github.braully.domain.Organization : organization
+io.github.braully.domain.FinancialAccount --|>  io.github.braully.domain.AbstractMigrableEntity
+io.github.braully.domain.FinancialAccount ..|>  io.github.braully.domain.IOrganiztionEntityDependent
+io.github.braully.domain.FinancialCharge -->  io.github.braully.domain.FactorType : typeFactorInterestRating
+io.github.braully.domain.FinancialCharge -->  io.github.braully.domain.FactorType : typeFactorTrafficTicket
+io.github.braully.domain.FinancialCharge -->  io.github.braully.domain.TypePeriod : typePeriodInterest
+io.github.braully.domain.FinancialCharge --|>  io.github.braully.domain.AbstractStatusEntity
+io.github.braully.domain.GenericType --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.GenericValue -->  io.github.braully.domain.GenericType : genericType
+io.github.braully.domain.GenericValue --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.Host --|>  io.github.braully.domain.AbstractStatusEntity
+io.github.braully.domain.InfoExtra "1" o-- "0..*"  io.github.braully.domain.GenericValue : genericValues
+io.github.braully.domain.InfoExtra --|>  io.github.braully.domain.AbstractGlobalEntity
+io.github.braully.domain.Inventory -->  io.github.braully.domain.Organization : organization
+io.github.braully.domain.Inventory --|>  io.github.braully.domain.AbstractGlobalEntity
+io.github.braully.domain.Inventory ..|>  io.github.braully.domain.IOrganiztionEntityDependent
+io.github.braully.domain.InventoryItem -->  io.github.braully.domain.Inventory : inventory
+io.github.braully.domain.InventoryItem -->  io.github.braully.domain.Partner : supplier
+io.github.braully.domain.InventoryItem -->  io.github.braully.domain.Product : product
+io.github.braully.domain.InventoryItem --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.InventoryItemTransaction -->  io.github.braully.domain.Inventory : inventory
+io.github.braully.domain.InventoryItemTransaction -->  io.github.braully.domain.InventoryItem : inventoryItem
+io.github.braully.domain.InventoryItemTransaction --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.LocaleSupported --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.LogEntryError --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.Menu "1" o-- "0..*"  io.github.braully.domain.Menu : childs
+io.github.braully.domain.Menu -->  io.github.braully.domain.Menu : parent
+io.github.braully.domain.Menu --|>  io.github.braully.domain.AbstractLightRemoveEntity
+io.github.braully.domain.NodeDir -->  io.github.braully.domain.NodeDir : parent
+io.github.braully.domain.NodeDir --|>  io.github.braully.domain.Node
+io.github.braully.domain.NodeFile --|>  io.github.braully.domain.Node
+io.github.braully.domain.NodeFileDir -->  io.github.braully.domain.NodeDir : directory
+io.github.braully.domain.NodeFileDir -->  io.github.braully.domain.NodeFile : file
+io.github.braully.domain.Organization -->  io.github.braully.domain.BinaryFile : logo
+io.github.braully.domain.Organization -->  io.github.braully.domain.Contact : contact
+io.github.braully.domain.Organization -->  io.github.braully.domain.Organization : parent
+io.github.braully.domain.Organization --|>  io.github.braully.domain.AbstractGlobalEntity
+io.github.braully.domain.Organization ..|>  io.github.braully.domain.INameComparable
+io.github.braully.domain.OrganizationRole -->  io.github.braully.domain.Organization : organization
+io.github.braully.domain.OrganizationRole -->  io.github.braully.domain.Role : role
+io.github.braully.domain.OrganizationRole --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.Partner "1" o-- "0..*"  io.github.braully.domain.PartnerPartner : partners
+io.github.braully.domain.Partner -->  io.github.braully.domain.City : birthCity
+io.github.braully.domain.Partner -->  io.github.braully.domain.Contact : contact
+io.github.braully.domain.Partner -->  io.github.braully.domain.InfoExtra : infoExtra
+io.github.braully.domain.Partner --|>  io.github.braully.domain.AbstractGlobalEntity
+io.github.braully.domain.Partner ..|>  io.github.braully.domain.INameComparable
+io.github.braully.domain.PartnerGroup "1" o-- "0..*"  io.github.braully.domain.Partner : partners
+io.github.braully.domain.PartnerGroup --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.PartnerPartner -->  io.github.braully.domain.Partner : partnerSource
+io.github.braully.domain.PartnerPartner -->  io.github.braully.domain.Partner : partnerTarget
+io.github.braully.domain.PartnerPartner --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.Payment -->  io.github.braully.domain.AccountTransaction : accountTransaction
+io.github.braully.domain.Payment --|>  io.github.braully.domain.AbstractAuditableEntity
+io.github.braully.domain.Phone --|>  io.github.braully.domain.AbstractLightRemoveEntity
+io.github.braully.domain.Product -->  io.github.braully.domain.Partner : manufacturer
+io.github.braully.domain.Product --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.ProductPrice -->  io.github.braully.domain.Inventory : inventory
+io.github.braully.domain.ProductPrice -->  io.github.braully.domain.Organization : organization
+io.github.braully.domain.ProductPrice -->  io.github.braully.domain.Product : product
+io.github.braully.domain.ProductPrice --|>  io.github.braully.domain.AbstractExpirableEntity
+io.github.braully.domain.PurchaseOrder "1" o-- "0..*"  io.github.braully.domain.PurchaseOrderItem : itens
+io.github.braully.domain.PurchaseOrder -->  io.github.braully.domain.AccountTransaction : accountTransaction
+io.github.braully.domain.PurchaseOrder -->  io.github.braully.domain.BinaryFile : contract
+io.github.braully.domain.PurchaseOrder -->  io.github.braully.domain.InfoExtra : infoExtra
+io.github.braully.domain.PurchaseOrder -->  io.github.braully.domain.Inventory : inventory
+io.github.braully.domain.PurchaseOrder -->  io.github.braully.domain.Organization : organization
+io.github.braully.domain.PurchaseOrder -->  io.github.braully.domain.Partner : partner
+io.github.braully.domain.PurchaseOrder --|>  io.github.braully.domain.AbstractAuditableEntity
+io.github.braully.domain.PurchaseOrder ..|>  io.github.braully.domain.IOrganiztionEntityDependent
+io.github.braully.domain.PurchaseOrderItem -->  io.github.braully.domain.PurchaseOrder : purchaseOrder
+io.github.braully.domain.PurchaseOrderItem --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.ReportTemplate --|>  io.github.braully.domain.AbstractStatusEntity
+io.github.braully.domain.Role "1" o-- "0..*"  io.github.braully.domain.Menu : menus
+io.github.braully.domain.Role "1" o-- "0..*"  io.github.braully.domain.Role : childs
+io.github.braully.domain.Role -->  io.github.braully.domain.Role : parent
+io.github.braully.domain.Role -->  io.github.braully.domain.SysRole : sysRole
+io.github.braully.domain.Role --|>  io.github.braully.domain.AbstractGlobalEntity
+io.github.braully.domain.TagItem "1" o-- "0..*"  io.github.braully.domain.TagItem : childs
+io.github.braully.domain.TagItem -->  io.github.braully.domain.TagItem : parent
+io.github.braully.domain.TagItem --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.Task "1" o-- "0..*"  io.github.braully.domain.TagItem : tags
+io.github.braully.domain.Task "1" o-- "0..*"  io.github.braully.domain.Task : childrens
+io.github.braully.domain.Task -->  io.github.braully.domain.Partner : partnerExecutor
+io.github.braully.domain.Task -->  io.github.braully.domain.Partner : partnerInterested
+io.github.braully.domain.Task -->  io.github.braully.domain.StatusExecutionCycle : statusExecution
+io.github.braully.domain.Task -->  io.github.braully.domain.Task : next
+io.github.braully.domain.Task -->  io.github.braully.domain.Task : parent
+io.github.braully.domain.Task --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.UserLogin "1" o-- "0..*"  io.github.braully.domain.Menu : menus
+io.github.braully.domain.UserLogin "1" o-- "0..*"  io.github.braully.domain.OrganizationRole : organizationRole
+io.github.braully.domain.UserLogin "1" o-- "0..*"  io.github.braully.domain.Role : roles
+io.github.braully.domain.UserLogin -->  io.github.braully.domain.SysRole : sysRole
+io.github.braully.domain.UserLogin --|>  io.github.braully.domain.AbstractGlobalEntity
+io.github.braully.domain.UserLoginPartner -->  io.github.braully.domain.Partner : partner
+io.github.braully.domain.UserLoginPartner -->  io.github.braully.domain.UserLogin : userLogin
+io.github.braully.domain.UserLoginPartner --|>  io.github.braully.domain.AbstractEntity
+io.github.braully.domain.UserMessage -->  io.github.braully.domain.UserLogin : userFrom
+io.github.braully.domain.UserMessage -->  io.github.braully.domain.UserLogin : userTo
+io.github.braully.domain.UserMessage --|>  io.github.braully.domain.AbstractLightRemoveEntity
+
+
+@enduml
